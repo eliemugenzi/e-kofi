@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import ValidateHelper from "../helpers/ValidateHelper";
 
 class Validate {
@@ -5,7 +6,8 @@ class Validate {
         const { error } = ValidateHelper.userSchema(req.body);
         if (error) {
             res.status(400).json({
-                sttaus: 400,
+                status: 400,
+                // eslint-disable-next-line no-useless-escape
                 error: error.details[0].message.replace(/[$\/\\#,+()$~%.'":*<>{}]/g, ""),
             });
         } else next();
@@ -15,7 +17,7 @@ class Validate {
         const { error } = ValidateHelper.loginSchema(req.body);
         if (error) {
             res.status(400).json({
-                sttaus: 400,
+                status: 400,
                 error: error.details[0].message.replace(/[$\/\\#,+()$~%.'":*<>{}]/g, ""),
             });
         } else next();
@@ -25,7 +27,7 @@ class Validate {
         const { error } = ValidateHelper.amountSchema(req.body);
         if (error) {
             res.status(400).json({
-                sttaus: 400,
+                status: 400,
                 error: error.details[0].message.replace(/[$\/\\#,+()$~%.'":*<>{}]/g, ""),
             });
         } else next();
