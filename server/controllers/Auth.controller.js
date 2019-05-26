@@ -73,7 +73,8 @@ class AuthController {
                     jwt.sign(currentUser, process.env.SECRET_KEY, (err, token) => {
                         res.status(200).json({
                             status: 200,
-                            data: [{ token, user: currentUser }],
+                            data: currentUser,
+                            token,
                         });
                     });
                 } else {
